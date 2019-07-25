@@ -31,10 +31,11 @@ const reducer = (state = initialState, action) => {
     case REMOVE_FEATURE:
       return {
         ...state,
+        additionalPrice: state.additionalPrice - action.payload.price,
         car: {
           ...state.car,
           features: state.car.features.filter(feature => {
-            if (action.payload === feature.id) {
+            if (action.payload.id === feature.id) {
               return false;
             } else {
               return true;
